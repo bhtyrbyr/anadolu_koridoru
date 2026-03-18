@@ -1,4 +1,4 @@
-export type StaticDocCategory = "hizmet" | "bolge";
+export type StaticDocCategory = "hizmet";
 
 export type StaticDoc = {
   id: string;
@@ -86,7 +86,7 @@ export const staticDocs: StaticDoc[] = [
     id: "antalya-aksu-evden-eve-tasimacilik",
     slug: "antalya-aksu-evden-eve-tasimacilik",
     title: "Aksu Evden Eve Taşımacılık",
-    category: "bolge",
+    category: "hizmet",
     excerpt:
       "Aksu’da keşif, planlama ve korumalı ambalajlama ile konforlu taşınma deneyimi.",
     paragraphs: [
@@ -101,7 +101,7 @@ export const staticDocs: StaticDoc[] = [
     id: "antalya-dosemealti-evden-eve-tasimacilik",
     slug: "antalya-dosemealti-evden-eve-tasimacilik",
     title: "Döşemealtı Evden Eve Taşımacılık",
-    category: "bolge",
+    category: "hizmet",
     excerpt:
       "Villa ve düşük katlı projelerde planlı, sistematik ve yüksek korumalı taşıma.",
     paragraphs: [
@@ -118,7 +118,7 @@ export const staticDocs: StaticDoc[] = [
     id: "antalya-konyaalti-evden-eve-tasimacilik",
     slug: "antalya-konyaalti-evden-eve-tasimacilik",
     title: "Konyaaltı Evden Eve Taşımacılık",
-    category: "bolge",
+    category: "hizmet",
     excerpt:
       "Prestijli konut dokusuna uygun yüksek standartlı paketleme, planlama ve asansörlü taşıma.",
     paragraphs: [
@@ -135,7 +135,7 @@ export const staticDocs: StaticDoc[] = [
     id: "antalya-kemer-evden-eve-tasimacilik",
     slug: "antalya-kemer-evden-eve-tasimacilik",
     title: "Kemer Evden Eve Taşımacılık",
-    category: "bolge",
+    category: "hizmet",
     excerpt:
       "Nem ve tuzlu hava etkisine uygun ambalajlama ile güvenli taşımacılık.",
     paragraphs: [
@@ -150,7 +150,7 @@ export const staticDocs: StaticDoc[] = [
     id: "antalya-kepez-evden-eve-tasimacilik",
     slug: "antalya-kepez-evden-eve-tasimacilik",
     title: "Kepez Evden Eve Taşımacılık",
-    category: "bolge",
+    category: "hizmet",
     excerpt:
       "Kepez’in yoğun yerleşiminde saha analizi + kişiye özel plan ile sıfır hasar hedefi.",
     paragraphs: [

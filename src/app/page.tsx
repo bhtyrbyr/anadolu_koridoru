@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { WhatsAppQuoteForm } from "@/components/WhatsAppQuoteForm";
 import { contact } from "@/lib/contact";
-import { getStaticDocsByCategory, getStaticDocById } from "@/lib/content";
 import { Carousel } from "@/components/ui/Carousel";
 import { Reveal } from "@/components/ui/Reveal";
+import { articles } from "@/lib/articles";
+import { RotatingServiceCards } from "@/components/RotatingServiceCards";
 
 export default function Home() {
-  const services = getStaticDocsByCategory("hizmet").slice(0, 6);
-  const heroDoc =
-    getStaticDocById("antalya-evden-eve-nakliyat-hizmeti") ?? services[0] ?? undefined;
+  const heroArticle = articles.find((a) => a.slug === "antalya-evden-eve-nakliyat-hizmeti") ?? articles[0];
 
   return (
     <div className="space-y-16">
@@ -23,7 +22,7 @@ export default function Home() {
               Anadolu Koridoru ile güvenli taşınma deneyimi
             </h1>
             <p className="max-w-xl text-base leading-7 text-zinc-700">
-              {heroDoc?.paragraphs?.[0] ??
+              {heroArticle?.slogan ??
                 "Eşyalarınızı özenle paketliyor, planlı bir operasyonla yeni adresinize güvenle taşıyoruz."}
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -70,41 +69,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="space-y-6">
+      <section id="hizmetler" className="space-y-6 scroll-mt-24">
         <div className="flex items-end justify-between gap-4">
           <div className="space-y-1">
             <h2 className="text-2xl font-semibold tracking-tight">Hizmetlerimiz</h2>
             <p className="text-sm text-zinc-600">
-              İhtiyacınıza uygun taşıma planı ve ekipman.
+              Tüm hizmetlerimizde kalite standardımız aynı: planlama, güvenlik ve şeffaf süreç.
             </p>
           </div>
-          <Link
-            href="/hizmetler"
-            className="hidden text-sm font-medium text-zinc-900 hover:underline sm:inline"
-          >
-            Tümünü gör
+          <Link href="/hizmetler" className="text-sm font-medium text-zinc-900 hover:underline">
+            Tümünü gör →
           </Link>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          {services.map((s) => (
-            <Link
-              key={s.id}
-              href={`/hizmetler/${s.slug}`}
-              className="group border border-black/10 bg-white p-6 shadow-sm transition-colors hover:bg-zinc-50"
-            >
-              <p className="text-lg font-semibold tracking-tight text-zinc-950">
-                {s.title}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-zinc-600">
-                {s.excerpt}
-              </p>
-              <p className="mt-4 text-sm font-medium text-zinc-900 group-hover:underline">
-                Detay
-              </p>
-            </Link>
-          ))}
-        </div>
+        <RotatingServiceCards
+          items={articles.map((a) => ({
+            slug: a.slug,
+            title: a.title,
+            slogan: a.slogan,
+          }))}
+          intervalMs={30000}
+        />
       </section>
 
       <Reveal>

@@ -1,15 +1,14 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
-import { getStaticDocsByCategory } from "@/lib/content";
+import { articles } from "@/lib/articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const routes = ["/", "/hizmetler", "/hakkimizda", "/iletisim", "/gizlilik"] as const;
-  const serviceRoutes = getStaticDocsByCategory("hizmet").map((d) => `/hizmetler/${d.slug}`);
-  const regionRoutes = getStaticDocsByCategory("bolge").map((d) => `/bolgeler/${d.slug}`);
+  const routes = ["/", "/hizmetler", "/misyonumuz", "/hakkimizda", "/iletisim", "/gizlilik"] as const;
+  const articleRoutes = articles.map((a) => `/makale/${a.slug}`);
 
-  return ["/bolgeler", ...routes, ...serviceRoutes, ...regionRoutes].map((path) => ({
+  return [...routes, ...articleRoutes].map((path) => ({
     url: new URL(path, siteConfig.siteUrl).toString(),
     lastModified: now,
     changeFrequency: "weekly",

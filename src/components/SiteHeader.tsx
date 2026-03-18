@@ -8,7 +8,7 @@ import { contact } from "@/lib/contact";
 const nav = [
   { href: "/", label: "Ana sayfa" },
   { href: "/hizmetler", label: "Hizmetler" },
-  { href: "/bolgeler", label: "Bölgeler" },
+  { href: "/misyonumuz", label: "Misyonumuz" },
   { href: "/hakkimizda", label: "Hakkımızda" },
   { href: "/iletisim", label: "İletişim" },
 ] as const;

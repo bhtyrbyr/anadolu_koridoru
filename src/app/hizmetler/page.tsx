@@ -1,43 +1,56 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { getStaticDocsByCategory } from "@/lib/content";
-import { Reveal } from "@/components/ui/Reveal";
+import { articles } from "@/lib/articles";
 
 export const metadata: Metadata = {
   title: "Hizmetler",
-  description:
-    "Evden eve nakliyat, asansörlü nakliyat, şehir içi/şehirler arası nakliyat, ofis taşıma ve parça eşya taşıma hizmetleri.",
+  description: "Tüm hizmet makalelerimiz ve içerikleri.",
 };
 
 export default function ServicesPage() {
-  const docs = getStaticDocsByCategory("hizmet");
-
   return (
     <div className="space-y-8">
-      <div className="space-y-2">
+      <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Hizmetler</h1>
-        <p className="text-zinc-600">
-          Antalya ve çevresinde ihtiyacınıza uygun taşıma çözümleri.
+        <p className="max-w-4xl text-zinc-700">
+          Tüm hizmetlerimizde aynı kalite standardıyla çalışırız. Aşağıdaki makalelerden
+          detayları inceleyebilirsiniz.
         </p>
-      </div>
+      </header>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {docs.map((d, idx) => (
-          <Reveal key={d.id} delayMs={Math.min(240, idx * 40)}>
-            <Link
-              href={`/hizmetler/${d.slug}`}
-              className="block border-b border-black/10 py-5 transition-colors hover:bg-white"
-            >
-              <p className="text-base font-semibold tracking-tight text-zinc-950">
-                {d.title}
-              </p>
-              <p className="mt-1 text-sm leading-6 text-zinc-700">{d.excerpt}</p>
-              <p className="mt-3 text-sm font-medium text-zinc-900">
-                Detay →
-              </p>
-            </Link>
-          </Reveal>
-        ))}
+      <div className="divide-y divide-black/10 border-t border-black/10">
+        {articles.map((a, idx) => {
+          const flip = idx % 2 === 1;
+          return (
+            <div key={a.slug} className="grid gap-6 py-10 md:grid-cols-2 md:items-center">
+              <div className={flip ? "md:order-2" : ""}>
+                <p className="text-xl font-semibold tracking-tight text-zinc-950">{a.title}</p>
+                <p className="mt-2 text-sm leading-6 text-zinc-700">{a.slogan}</p>
+                <Link
+                  href={`/makale/${a.slug}`}
+                  className="mt-4 inline-flex text-sm font-medium text-zinc-900 hover:underline"
+                >
+                  Makaleyi oku →
+                </Link>
+              </div>
+
+              <div className={flip ? "md:order-1" : ""}>
+                <div className="border border-black/10 bg-white p-4 shadow-sm">
+                  <div className="mx-auto w-4/5">
+                    <Image
+                      src={a.imageSrc}
+                      alt={a.title}
+                      width={900}
+                      height={600}
+                      className="h-auto w-full object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

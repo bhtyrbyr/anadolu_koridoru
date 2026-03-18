@@ -12,7 +12,14 @@ export default function Home() {
   return (
     <div className="space-y-16">
       <section className="relative overflow-hidden border border-black/10 bg-white shadow-sm">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(251,191,36,0.28),transparent_45%),radial-gradient(circle_at_80%_30%,rgba(59,130,246,0.14),transparent_55%)]" />
+        <div
+          className="absolute inset-0 bg-[url('/background.png')] bg-center bg-no-repeat bg-cover opacity-15 blur-[2px]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(251,191,36,0.28),transparent_45%),radial-gradient(circle_at_80%_30%,rgba(59,130,246,0.14),transparent_55%)]"
+          aria-hidden="true"
+        />
         <div className="relative grid gap-10 p-8 sm:p-10 md:grid-cols-[1.2fr_0.8fr]">
           <div className="space-y-6">
             <p className="inline-flex w-fit items-center gap-2 border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-900">
@@ -48,9 +55,9 @@ export default function Home() {
               ].map((x) => (
                 <div
                   key={x.k}
-                  className="border border-black/10 bg-white/70 p-4"
+                  className="border border-black/10 bg-white/70 px-4 py-2"
                 >
-                  <p className="text-lg font-semibold tracking-tight">{x.k}</p>
+                  <p className="text-base font-semibold tracking-tight">{x.k}</p>
                   <p className="text-sm text-zinc-600">{x.v}</p>
                 </div>
               ))}

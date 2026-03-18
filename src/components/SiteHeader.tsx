@@ -33,21 +33,10 @@ export function SiteHeader() {
             <Logo
               className=""
               alt="Anadolu Koridoru Nakliyat logo"
-              height={36}
-              maxWidth={140}
+              height={81}
+              maxWidth={315}
             />
-            <div className="min-w-0 leading-tight">
-              <p className="truncate font-semibold tracking-tight text-zinc-950">
-                Anadolu Koridoru Nakliyat
-              </p>
-              <p className="hidden truncate text-xs text-zinc-600 sm:block">
-                Evden Eve • Asansörlü • Sigortalı
-              </p>
-            </div>
           </Link>
-          <span className="hidden border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] font-medium text-amber-900 sm:inline-flex">
-            7/24 • Hızlı Teklif
-          </span>
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
